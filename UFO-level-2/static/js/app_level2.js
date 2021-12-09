@@ -4,19 +4,27 @@ console.log("app_level2.js running");
 // from data.js
 var ufoData = data;
 
-// Create a table body object
-var tbody = d3.select("tbody");
 
-// Loop through the UFO data and build a table of it
-ufoData.forEach(sighting => {
-    var row = tbody.append("tr");
-    // Loop through each [key, value] pair in the data entry
-    Object.entries(sighting).forEach(([key, value]) => {
-        // Append a cell to the row for each value in the [key, value] pairings
-        var cell = row.append("td");
-        cell.text(value);
+// Function to build a new table
+function buildTable(data) {
+    // Clear the html for the current table to be replaced with filtered data
+    tbody = d3.select("tbody");
+    tbody.html("");
+
+    // Display the filtered sightings in the cleared table
+    data.forEach(sighting => {
+        var row = tbody.append("tr");
+        // Loop through each [key, value] pair in the data
+        Object.entries(sighting).forEach(([key, value]) => {
+            // Append a cell to the row for each value in the [key, value] pairings
+            var cell = row.append("td");
+            cell.text(value);
+        });
     });
-});
+};
+
+// Build the initial table
+buildTable(ufoData);
 
 ////////////////////////////////////////////////////////////////////////////////
 // Render data fitered on user input ///////////////////////////////////////////
@@ -82,22 +90,4 @@ function runFilter() {
 
     // Call a function to build a new table with filtered data
     buildTable(filteredData);
-};
-
-// Function to build a new table
-function buildTable(data) {
-    // Clear the html for the current table to be replaced with filtered data
-    tbody = d3.select("tbody");
-    tbody.html("");
-
-    // Display the filtered sightings in the cleared table
-    data.forEach(sighting => {
-        var row = tbody.append("tr");
-        // Loop through each [key, value] pair in the data
-        Object.entries(sighting).forEach(([key, value]) => {
-            // Append a cell to the row for each value in the [key, value] pairings
-            var cell = row.append("td");
-            cell.text(value);
-        });
-    });
 };
