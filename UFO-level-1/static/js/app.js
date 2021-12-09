@@ -23,9 +23,9 @@ console.log(tbody)
 // Render data fitered on user input
 var form = d3.select("form");
 
-form.on("submit", runEnter);
+form.on("submit", runFilter);
 
-function runEnter() {
+function runFilter() {
     // Prevent the page from refreshing
     d3.event.preventDefault();
     
