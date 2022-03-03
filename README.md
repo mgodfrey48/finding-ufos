@@ -1,4 +1,4 @@
-# javascript-challenge
+# What kinds of UFOs do people see? And where?
 
 This repository contains code produce and filter through data on UFO sightings around the world for part of 2010. 
 
